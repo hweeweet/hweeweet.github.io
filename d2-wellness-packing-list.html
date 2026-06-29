@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>In-Flight Wellness Packing List — Hweeweet</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf6f0;
+    --warm-white: #fffdf9;
+    --ink: #1a1410;
+    --ink-light: #5a4f45;
+    --terracotta: #c8603a;
+    --terracotta-pale: #f5e8e2;
+    --sage: #6b8f71;
+    --sage-pale: #e8f0e9;
+    --gold: #c9a84c;
+    --gold-pale: #f7f0dc;
+    --sky-pale: #e5eef3;
+    --rule: #ddd5c8;
+    --amber-pale: #f5eddc;
+  }
+
+  html { color-scheme: light only; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #ede8e0 !important;
+    color: #1a1410 !important;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 32px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .page {
+    background: var(--cream);
+    width: 100%;
+    max-width: 640px;
+    padding: 40px 36px 48px;
+    position: relative;
+  }
+
+  /* Corner mark — editorial detail */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 18px; height: 18px;
+    border-top: 2px solid var(--terracotta);
+    border-left: 2px solid var(--terracotta);
+  }
+  .page::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 18px; height: 18px;
+    border-bottom: 2px solid var(--terracotta);
+    border-right: 2px solid var(--terracotta);
+  }
+
+  /* HEADER */
+  .header {
+    border-bottom: 1.5px solid var(--terracotta);
+    padding-bottom: 16px;
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+  }
+  .doc-tag {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+
+  /* TITLE BLOCK */
+  .title-block {
+    margin-bottom: 28px;
+  }
+  .title-block h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .title-block h1 em {
+    color: var(--terracotta);
+    font-style: italic;
+  }
+  .subtitle {
+    font-size: 13px;
+    color: var(--ink-light);
+    line-height: 1.5;
+  }
+
+  /* CATEGORY */
+  .category {
+    margin-bottom: 20px;
+  }
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .category-dot {
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+  }
+  .category-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .category-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  /* ITEMS */
+  .items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    padding: 7px 14px 7px 0;
+    border-bottom: 1px solid #ede8df;
+  }
+  .item:nth-child(even) {
+    padding-left: 14px;
+    border-left: 1px solid #ede8df;
+    padding-right: 0;
+  }
+  /* Make last row items have no bottom border if they're in last row */
+  .check {
+    width: 13px;
+    height: 13px;
+    border: 1.5px solid var(--rule);
+    flex-shrink: 0;
+    margin-top: 2px;
+    border-radius: 1px;
+  }
+  .item-text {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.4;
+    font-weight: 400;
+  }
+  .item-note {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-top: 1px;
+    font-weight: 300;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1px 5px;
+    margin-left: 4px;
+    vertical-align: middle;
+    border-radius: 1px;
+  }
+  .tag-rx { background: var(--terracotta); color: white; }
+  .tag-otc { background: var(--sage); color: white; }
+
+  /* SINGLE COLUMN for odd-count categories */
+  .items-single {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .items-single .item {
+    padding-right: 0;
+  }
+  .items-single .item:nth-child(even) {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  /* FLIGHT DAY STRIP */
+  .flight-strip {
+    background: var(--amber-pale);
+    border-left: 3px solid var(--terracotta);
+    padding: 14px 16px;
+    margin: 24px 0 0;
+  }
+  .strip-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .strip-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  @media (max-width: 480px) {
+    .strip-steps { grid-template-columns: 1fr 1fr; }
+    .items { grid-template-columns: 1fr; }
+    .item:nth-child(even) { padding-left: 0; border-left: none; }
+  }
+  .strip-step {
+    text-align: center;
+  }
+  .step-time {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--terracotta);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .step-action {
+    font-size: 11px;
+    color: var(--ink-light);
+    line-height: 1.4;
+  }
+  .step-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--rule);
+    font-size: 14px;
+    padding-top: 12px;
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 24px;
+    padding-top: 14px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-note {
+    font-size: 10px;
+    color: var(--ink-light);
+    line-height: 1.5;
+    max-width: 320px;
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 11px;
+    color: var(--terracotta);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="brand">Hweeweet</div>
+    <div class="doc-tag">In-Flight Wellness · Packing List</div>
+  </div>
+
+  <div class="title-block">
+    <h1>The night-before<br><em>wellness checklist.</em></h1>
+    <p class="subtitle">Everything your dog needs for a comfortable flight — in one list. Pack this in your carry-on, not checked luggage.</p>
+  </div>
+
+  <!-- MEDICATIONS -->
+  <div class="category">
+    <div class="category-header">
+      <svg class="category-dot" viewBox="0 0 8 8"><rect width="8" height="8" fill="#c8603a"/></svg>
+      <span class="category-label">Medications</span>
+      <div class="category-rule"></div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Cerenia (maropitant)<span class="tag tag-rx">Rx</span>
+          <span class="item-note">Anti-nausea. Give 2 hrs before departure.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Gabapentin<span class="tag tag-rx">Rx</span>
+          <span class="item-note">Flight-day anxiety dose. Not the same as daily arthritis dose — confirm with vet.</span>
+        </div>
+      </div>
+      <div class="item item-optional"><div class="check"></div><div class="item-text">Melatonin <em>(natural remedy — discuss with vet first)</em><span class="item-note">Some owners use 0.5–1mg for small dogs. Zac didn\'t need it.</span>
+        </div>
+      </div>
+      <div class="item item-optional"><div class="check"></div><div class="item-text">Ginger <em>(natural remedy — discuss with vet first)</em><span class="item-note">Some owners use ~250mg for nausea. Zac didn\'t need it.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHEWS & FOOD -->
+  <div class="category">
+    <div class="category-header">
+      <svg class="category-dot" viewBox="0 0 8 8"><rect width="8" height="8" fill="#6b8f71"/></svg>
+      <span class="category-label">Chews & Food</span>
+      <div class="category-rule"></div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">2× bully sticks
+          <span class="item-note">One for ascent, one for descent. The descent one matters more.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Backup chew (Himalayan / Kong)
+          <span class="item-note">In case the first is refused. Both introduced at home beforehand.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">High-value small treats
+          <span class="item-note">For giving medications and reward. Not for feeding.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Collapsible bowl + small water bottle
+          <span class="item-note">Offer water during cruise. Hydration helps nausea.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMFORT & ANXIETY -->
+  <div class="category">
+    <div class="category-header">
+      <svg class="category-dot" viewBox="0 0 8 8"><rect width="8" height="8" fill="#c9a84c"/></svg>
+      <span class="category-label">Comfort & Calm</span>
+      <div class="category-rule"></div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Thundershirt
+          <span class="item-note">On 15–20 mins before boarding, not at the gate.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Worn t-shirt or familiar blanket
+          <span class="item-note">Your scent in the carrier. Do this every time.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Bach Rescue Remedy
+          <span class="item-note">2–4 drops on gums at boarding. Non-sedating.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Favourite toy
+          <span class="item-note">Familiar smell and texture. Something they already love.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOCUMENTS -->
+  <div class="category">
+    <div class="category-header">
+      <svg class="category-dot" viewBox="0 0 8 8"><rect width="8" height="8" fill="#5b8fa8"/></svg>
+      <span class="category-label">Documents</span>
+      <div class="category-rule"></div>
+    </div>
+    <div class="items">
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Travel health certificate
+          <span class="item-note">Issued within 10 days of departure.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Vaccination + titer records
+        </div>
+      </div>
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Medication list with doses
+          <span class="item-note">Written copy for customs if asked.</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Vet contact number
+          <span class="item-note">For remote advice in transit if needed.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POST-FLIGHT -->
+  <div class="category">
+    <div class="category-header">
+      <svg class="category-dot" viewBox="0 0 8 8"><rect width="8" height="8" fill="#9e8878"/></svg>
+      <span class="category-label">At Destination</span>
+      <div class="category-rule"></div>
+    </div>
+    <div class="items items-single">
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Ear cleaning solution — gentle post-flight clean. Check for redness or discharge in the hours after landing.
+        </div>
+      </div>
+      <div class="item">
+        <div class="check"></div>
+        <div class="item-text">Probiotic supplement — travel disrupts gut flora. Start on arrival, continue a few days.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLIGHT DAY TIMING STRIP -->
+  <div class="flight-strip">
+    <div class="strip-label">Flight day timing — at a glance</div>
+    <div class="strip-steps">
+      <div class="strip-step">
+        <span class="step-time">T–8 hrs</span>
+        <span class="step-action">Last full meal. Water freely after.</span>
+      </div>
+      <div class="strip-step">
+        <span class="step-time">T–2 hrs</span>
+        <span class="step-action">Cerenia (if prescribed).</span>
+      </div>
+      <div class="strip-step">
+        <span class="step-time">T–1 hr</span>
+        <span class="step-action">Gabapentin (if prescribed). Body wrap or Thundershirt.</span>
+      </div>
+      <div class="strip-step">
+        <span class="step-time">Descent</span>
+        <span class="step-action">Second chew in. Ear Slides. Full protocol.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-note">All medications require vet sign-off. Trial gabapentin at home at least one week before the flight — first doses can cause pronounced sedation. The full wellness protocol is in The Flight Plan.</div>
+    <div class="footer-brand">Hweeweet</div>
+  </div>
+
+</div>
+</body>
+</html>
